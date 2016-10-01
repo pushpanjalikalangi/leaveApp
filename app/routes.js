@@ -3,6 +3,7 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var Leave = require('../app/models/leave');
 var User = require('../app/models/user');
+var Post = require('../app/models/posts');
 var notifier = require('node-notifier');
 
 var multer  = require('multer');
@@ -84,6 +85,67 @@ module.exports = function(app, passport) {
         }
     });
 
+app.get('/post',isLoggedIn,function(req,res){
+   res.render('posts.hbs',{
+     user: req.user.local.name
+   })
+});
+
+app.post('/newpost',isLoggedIn,upload.single('clogo'),function(req, res,next) {
+  var post = new Post({
+      companyname: req.body.companyname,
+      companywebsite: req.body.companywebsite,
+      companymail: req.body.companymail,
+      jobtype: req.body.jobtype,
+      jobcategory: req.body.category,
+      qualification: req.body.qualification,
+      location:req.body.clocation,
+      address:req.body.caddress,
+      companylogo: {
+        name:req.file.originalname,
+        img:req.file.path,
+        contentType:req.file.mimetype
+      },
+      apply:false
+  });
+  post.save(function(err, doc) {
+      if (err)
+          res.json(err);
+      else {
+          notifier.notify('You Have Posted Successfully');
+          res.redirect('/role');
+      }
+  });
+});
+
+app.get('/viewpost',isLoggedIn,function(req, res) {
+        Post.find({}, function(err, doc) {
+            res.render('viewjobs.hbs', {
+                post: doc,
+              user: req.user.local.name
+            });
+        });
+      });
+
+app.post('/applypost',function(req,res){
+//  res.send(req.body.id);
+  Post.update({
+          _id: req.body.id
+      }, {
+          $set: {
+              apply:true
+          }
+      },
+      function(err, result) {
+          if (err)
+              res.json(err)
+          else
+              notifier.notify("Successfully posted");
+              res.redirect('/role');
+
+      });
+})
+
     app.get('/update', function(req, res) {
       User.findOne({_id:req.user._id},function(err,doc){
         if (err) {
@@ -97,7 +159,6 @@ module.exports = function(app, passport) {
   });
 
     app.post('/updateprofile',isLoggedIn,upload.single('profile'),function(req, res,next) {
-    console.log(req.file.originalname);
         User.update({
                 _id: req.body.id
             }, {

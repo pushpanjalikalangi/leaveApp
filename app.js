@@ -6,7 +6,7 @@ var flash    = require('connect-flash');
 var session = require('session');
 var dialog = require('dialog');
 var cookieparser = require('cookieparser');
-
+var bodyparser = require('body-parser');
 var configDB = require('./config/database.js');
 var flash = require('express-flash');
 var multer = require('multer');
@@ -21,6 +21,8 @@ require('./config/passport')(passport); // pass passport for configuration
 	app.use(express.logger('dev')); // log every request to the console
 	app.use(express.cookieParser()); // read cookies (needed for auth)
 //	app.use(express.bodyParser()); // get information from html forms
+app.use(bodyparser.json()); // to support JSON bodies
+app.use(bodyparser.urlencoded({ extended: true }));
 	app.use(express.json());
 	app.use(express.urlencoded());
 	app.use(multer({ dest: './uploads/' }));
