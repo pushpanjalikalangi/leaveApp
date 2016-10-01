@@ -1,0 +1,132 @@
+<head>
+	<title>Leave Application</title>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+
+	<style>
+		body {
+			padding-top: 80px;
+			word-wrap: break-word;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+
+		<div class="page-header text-center">
+			<h1><span class="glyphicon glyphicon grain"></span>Admin:{{user}}</h1>
+			<a href="/logout" class="btn btn-default btn-sm">Logout</a>
+		</div>
+
+		<div class="row">
+
+			<!-- LOCAL INFORMATION -->
+			<div class="col-sm-6">
+				<div class="well">
+					<h2>Request for Approval</h2>
+
+					<div class="form-group">
+	<table border="1" >
+		<!--false-->
+		<tr>
+			<th>User Name</th>
+			<th>Leave Type</th>
+			<th>Leave From</th>
+			<th>Leave To</th>
+			<th>Reason</th>
+			<th>Status</th>
+		</tr>
+		{{#each leave}}
+			{{#unless notify}}
+				<tr>
+					<td>{{username}}</td>
+					<td>{{leavetype}}</td>
+					<td>{{leavefrom}}</td>
+					<td>{{leaveto}}</td>
+					<td>{{reason}}</td>
+					<form action="/approve/{{_id}}" method="POST">
+						<td><button type="submit" class="label label-success">Accept</button>
+						</form>
+						<form action="/reject/{{_id}}" method="POST">
+								<button type="submit" class="label label-danger">Reject</button>
+            </form>
+							</td>
+										</tr>
+										{{/unless}}
+										{{/each}}
+                           </table>
+                           </div>
+
+			</div>
+		</div>
+
+		<div class="col-sm-6">
+			<div class="well">
+				<h2>Accepted List</h2>
+                        <div class="form-group">
+			               <table border="1">
+							         <tr>
+										<th>User Name</th>
+										<th>Leave Type</th>
+										<th>Leave From</th>
+										<th>Leave To</th>
+										<th>Reason</th>
+										<th>Status</th>
+										</tr>
+									{{#each leave}}
+							  		 {{#if notify}}
+										   {{#if status}}
+												 <tr>
+													<td>{{username}}</td>
+													<td>{{leavetype}}</td>
+													<td>{{leavefrom}}</td>
+													<td>{{leaveto}}</td>
+													<td>{{reason}}</td>
+													<td>{{#if status}} Accept{{/if}}</td>
+											 	</tr>
+									 	{{/if}}
+									 {{/if}}
+							  {{/each}}
+                           </table>
+                           </div>
+			</div>
+		</div>
+
+		<div align="center" class="col-sm-8">
+			<div class="well">
+				<h2>Rejected List</h2>
+                        <div class="form-group">
+			               <table border="1">
+							   <!--false-->
+							         <tr>
+										<th>User Name</th>
+										<th>Leave Type</th>
+										<th>Leave From</th>
+										<th>Leave To</th>
+										<th>Reason</th>
+										<th>Status</th>
+										</tr>
+									{{#each leave}}
+							  		 {{#if notify}}
+										   {{#unless status}}
+													<tr>
+														<td>{{username}}</td>
+														<td>{{leavetype}}</td>
+														<td>{{leavefrom}}</td>
+														<td>{{leaveto}}</td>
+														<td>{{reason}}</td>
+														<td>{{#unless status}} Reject {{/unless}}</td>
+													</tr>
+										  {{/unless}}
+										{{/if}}
+										{{/each}}
+                           </table>
+                           </div>
+			</div>
+		</div>
+
+	</div>
+	</div>
+
+</body>

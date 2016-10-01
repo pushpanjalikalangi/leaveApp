@@ -1,0 +1,84 @@
+<html>
+  <head>
+    <title>leave application</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+  	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <style>
+  		body 		{ padding-top:80px; }
+  	</style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="page animsition">
+          <div class="page-header">
+            <h1 class="page-title">{{user.local.name}}</h1>
+            <div class="page-header-actions">
+              <ol class="breadcrumb">
+                <li><a href="/">Home</a></li>
+                <li><a href="/role">Profile</a></li>
+                <li><a href="/logout">Logout</a></li>
+              </ol>
+            </div>
+          </div>
+      <!-- <div class="page-header text-center">
+    		<h1><span class="fa fa-anchor"></span> {{user.local.name}}</h1>
+    		<a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    	</div> -->
+
+    	<div class="row">
+        <div class="col-sm-6">
+           <div class="well">
+             <h3>Profile Update</h3>
+             <form  action='/updateprofile' method='post' enctype="multipart/form-data">
+               <input type="hidden" name="id" value="{{user._id}}">
+            <div class="form-group">
+              First Name <input type="text" name="fname" value="{{user.fname}}" maxlength="10" required>
+              last Name <input type="text" name="lname" value="{{user.lname}}" maxlength="10" required>
+            </div>
+            <div class="form-group">
+              Phone Number <input type="number" name="pno" value="{{user.phonenumber}}" required>
+            </div>
+            <div class="form-group">
+              Gender <input type="radio" name="gender" value="{{user.gender}}" checked required> Male
+              <input type="radio" name="gender" value="{{user.gender}}" required> Female
+            </div>
+
+            <div class="form-group">
+               Address<textarea class="form-control" name="address" value="{{user.address}}"></textarea>
+            </div>
+            <div class="form-group">
+              Country <select name="country" rows="3" columns="3" value="{{user.contry}}" id="country">
+        				  <option value="select">select</option>
+        				  <option value="ap">Andhra Pradesh</option>
+        				  <option value="ts">Telangana</option>
+        			</select>
+            </div>
+            <div class="form-group">
+              Zip Code <input type="number" name="zipcode" value="{{user.zipcode}}" required>
+            </div>
+            <div class="form-group">
+              Language <input type="checkbox" name="language" value="{{user.language}}"> English
+              <input type="checkbox" name="language" value="{{user.language}}"> Non English
+            </div>
+            <div class="form-group">
+               <input type='file' name='profile' type="image/jpeg" accept="application/x-zip-compressed,image/*">
+               <!-- <input type="submit" value="Upload Image" name="submit" /> -->
+             </div>
+            <button type="submit" class="btn btn-primary btn-lg">Update</button>
+            <a type="reset" href="/role" class="btn btn-warning btn-lg">Cancel</a>
+          </form>
+       </div>
+    </div>
+
+    <!-- <div class="col-sm-6">
+       <div class="well">
+          <h3>Select Image</h3>
+           <form  action='/upload' method='post' enctype="multipart/form-data">
+             <input type="hidden" name="id" value="{{user._id}}">
+                  <input type='file' name='profile' accept="application/x-zip-compressed,image/*">
+                  <input type="submit" value="Upload Image" name="submit" />
+            </form>
+        </div>
+   </div> -->
+   </div>
+  </body>
