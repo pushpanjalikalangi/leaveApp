@@ -28,12 +28,11 @@
 			</div>
 
 			<div class="row">
-
 				{{#each post}}
 				{{#unless apply}}
-					<div class="well col-sm-5">
+					<div class="well col-sm-8">
 						<form action="/applypost" method="post">
-							<div class="col-xs-12 col-md-9">
+							<div class="col-xs-12 col-md-8">
 								<input type="hidden" name="id" value="{{_id}}">
 								<h5>Company Name:{{companyname}}</h5>
 								<h5>Company Website:{{companywebsite}}</h5>
@@ -43,18 +42,14 @@
 								<h5>Qualification:{{qualification}}</h5>
 								<h5>Job location:{{location}}</h5>
 								<h5>Address:{{address}}</h5>
-
 								<button type="submit" class="btn btn-primary btn-lg">Apply</button>
 								<a type="reset" href="/role" class="btn btn-warning btn-lg">Cancel</a>
 							</div>
-							<div class="col-xs-6 col-md-3">
-									<img class="page-title" src="{{companylogo.img}}" height="100" width="100">
+							<div class="col-xs-6 col-md-4">
+									<img class="page-title" src="{{companylogo.img}}" height="150" width="150">
 							</div>
-
-
 						</form>
 					</div>
-
 					{{/unless}}
 				{{/each}}
 			</div>
