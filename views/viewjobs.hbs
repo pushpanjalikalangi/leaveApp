@@ -28,14 +28,12 @@
 			</div>
 
 			<div class="row">
-				<!-- LOCAL INFORMATION -->
+
 				{{#each post}}
 				{{#unless apply}}
-					<div class="col-sm-6">
-						<!-- <h2>Post a Resume</h2> -->
-
+					<div class="well col-sm-5">
 						<form action="/applypost" method="post">
-							<div class="well">
+							<div class="col-xs-12 col-md-9">
 								<input type="hidden" name="id" value="{{_id}}">
 								<h5>Company Name:{{companyname}}</h5>
 								<h5>Company Website:{{companywebsite}}</h5>
@@ -45,45 +43,19 @@
 								<h5>Qualification:{{qualification}}</h5>
 								<h5>Job location:{{location}}</h5>
 								<h5>Address:{{address}}</h5>
-								<img class="page-title" src="{{companylogo.img}}" height="20" width="20">
+
 								<button type="submit" class="btn btn-primary btn-lg">Apply</button>
 								<a type="reset" href="/role" class="btn btn-warning btn-lg">Cancel</a>
 							</div>
+							<div class="col-xs-6 col-md-3">
+									<img class="page-title" src="{{companylogo.img}}" height="100" width="100">
+							</div>
+
+
 						</form>
 					</div>
+
 					{{/unless}}
 				{{/each}}
 			</div>
-
-
-
-			<!-- <div class="form-group">
-                 Resume Title <input class="form-control" id="title" name="title" type="text"/>
-              </div>
-              <div class="form-group">
-                Resume Category  <br>
-                <input type="checkbox" name="category" value="Bike"> I have a bike<br/>
-                <input type="checkbox" name="category" value="Car" checked> I have a car<br>
-                <input type="checkbox" name="category" value="Bike"> I have a bike<br>
-                <input type="checkbox" name="category" value="Bike"> I have a bike<br>
-                <input type="checkbox" name="category" value="Bike"> I have a bike<br>
-              </div>
-              <div class="form-group">
-                Availability <input type="radio" name="availability" checked required> Full Time
-                <input type="radio" name="availability"> Part Type
-              </div>
-              <div class="form-group">
-                 First Name <input class="form-control" id="fname" name="fname" type="text"/>
-              </div>
-              <div class="form-group">
-                 Last Name <input class="form-control" id="lanme" name="lname" type="text"/>
-              </div>
-              <div class="form-group">
-                 Your Address<textarea class="form-control" name="address"></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary btn-lg">Update</button>
-              <a type="reset" href="/role" class="btn btn-warning btn-lg">Cancel</a>
-          </form>
-      </div>
-  </div> -->
 </body>
