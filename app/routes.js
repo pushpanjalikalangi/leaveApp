@@ -159,6 +159,7 @@ app.post('/applypost',function(req,res){
   });
 
     app.post('/updateprofile',isLoggedIn,upload.single('profile'),function(req, res,next) {
+      console.log(req.body);
         User.update({
                 _id: req.body.id
             }, {

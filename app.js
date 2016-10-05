@@ -10,8 +10,12 @@ var bodyparser = require('body-parser');
 var configDB = require('./config/database.js');
 var flash = require('express-flash');
 var multer = require('multer');
+var fs = require('fs');
+var hbs = require('hbs');
 
-
+// hbs.registerPartial('navbar', fs.readFileSync(__dirname + '/views/navbar.hbs', 'utf8'));
+// hbs.registerPartial('login', fs.readFileSync(__dirname + '/views/login.hbs', 'utf8'));
+//hbs.registerPartials(__dirname + '/views/partials');
 // configuration ===============================================================
 mongoose.connect(configDB.url); // connect to our database
 
