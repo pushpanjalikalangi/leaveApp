@@ -1,104 +1,88 @@
 <head>
 	<title>Leave Application</title>
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-		<!--  jQuery -->
-	<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-
-	<!-- Isolated Version of Bootstrap, not needed if your site already uses Bootstrap -->
-	<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
-
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<!-- Bootstrap Date-Picker Plugin -->
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
 
 	<script>
-    $(document).ready(function(){
-      var date_input=$('input[name="leavefrom"]'); //our date input has the name "date"
-      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-      var options={
-        format: 'dd/mm/yyyy',
-        container: container,
-        todayHighlight: true,
-        autoclose: true,
-      };
-      date_input.datepicker(options);
-    })
-	$(document).ready(function(){
-      var date_input=$('input[name="leaveto"]'); //our date input has the name "date"
-      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-      var options={
-        format: 'dd/mm/yyyy',
-        container: container,
-        todayHighlight: true,
-        autoclose: true,
-      };
-      date_input.datepicker(options);
-    })
-
-</script>
-<style>
-    body { padding-top:80px; word-wrap:break-word; }
-</style>
+		$(document).ready(function() {
+			var date_input = $('input[name="leavefrom"]'); //our date input has the name "date"
+			var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+			var options = {
+				format: 'dd/mm/yyyy',
+				container: container,
+				todayHighlight: true,
+				autoclose: true,
+			};
+			date_input.datepicker(options);
+		})
+		$(document).ready(function() {
+			var date_input = $('input[name="leaveto"]'); //our date input has the name "date"
+			var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+			var options = {
+				format: 'dd/mm/yyyy',
+				container: container,
+				todayHighlight: true,
+				autoclose: true,
+			};
+			date_input.datepicker(options);
+		})
+	</script>
+	<style>
+		body {
+			word-wrap: break-word;
+		}
+	</style>
 </head>
+
 <body>
-<div class="container">
-
-<div class="page animsition">
-    <div class="page-header">
-      <h1 class="page-title">{{name}}</h1>
-      <div class="page-header-actions">
-        <ol class="breadcrumb">
-          <li><a href="/">Home</a></li>
-					<li><a href="/role">Profile</a></li>
-          <li><a href="/update">Update Profile</a></li>
-          <li><a href="/logout">Logout</a></li>
-        </ol>
-      </div>
-    </div>
-
-	<!-- <div class="page-header text-center">
-		<h1><span class="fa fa-anchor"></span> {{user.local.name}}</h1>
-		<a href="/logout" class="btn btn-default btn-sm">Logout</a>
-	</div> -->
-	<div class="row">
-
-		<!-- LOCAL INFORMATION -->
-		<div class="col-sm-6">
-			<div class="well">
-				<h3>Leave Application</h3>
-				<form action="/applynewleave" method="post">
-					<p>
-						<div class="form-group">
-			              <label>Leave Type</label>
-			              <select name="leavetype" id="leave-type">
-							  <option value="sleep-leave">select</option>
-							  <option value="casual-leave">Casual Leave</option>
-							  <option value="sick-leave">Sick Leave</option>
-							  <option value="eamed-leave">Eamed Leave</option>
-							</select>
-		                </div>
-
-						<div class="form-group">
-			               <label>Leave From</label>
-			               <input class="form-control" id="date" name="leavefrom" placeholder="dd/mm/yy" type="text"/>
-		                 </div>
-						 <div class="form-group">
-			               <label>To</label>
-			               <input class="form-control" id="date1" name="leaveto" placeholder="dd/mm/yy" type="text"/>
-		                 </div>
-                         <div class="form-group">
-			               <label>Reason</label>
-			               <input type="textarea" class="form-control" name="reason">
-		                 </div>
-			               <button type="submit" class="btn btn-primary btn-lg">Apply</button>
-						   <a type="reset" href="/role" class="btn btn-warning btn-lg">Cancel</a>
-					</p>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="well bs-component">
+					<form action="/applynewleave" method="post" class="form-horizontal">
+						<fieldset>
+							<legend>Apply Leave</legend>
+							<div class="form-group">
+								<label for="leave-type" class="col-md-2 control-label">Leave Type</label>
+								<div class="col-md-10">
+									<select name="leavetype" id="leave-type" class="form-control">
+									  <option value="sleep-leave">select</option>
+									  <option value="casual-leave">Casual Leave</option>
+									  <option value="sick-leave">Sick Leave</option>
+									  <option value="eamed-leave">Eamed Leave</option>
+						   	</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="date" class="col-md-2 control-label">Leave From</label>
+								<div class="col-md-10">
+									<input class="form-control" id="date" name="leavefrom" placeholder="dd/mm/yy" type="text" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="date1" class="col-md-2 control-label">Leave To</label>
+								<div class="col-md-10">
+									<input class="form-control" id="date1" name="leaveto" placeholder="dd/mm/yy" type="text" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="reason" class="col-md-2 control-label">Reason</label>
+								<div class="col-md-10">
+									<input type="textarea" class="form-control" name="reason">
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-md-10 col-md-offset-2">
+									<button type="submit" class="btn btn-primary btn-lg">Apply</button>
+									<a type="reset" href="/role" class="btn btn-warning btn-lg">Cancel</a>
+								</div>
+							</div>
 					</form>
+				</div>
 			</div>
 		</div>
-
 	</div>
-
-</div>
 </body>

@@ -5,14 +5,17 @@ var Leave = require('../app/models/leave');
 var User = require('../app/models/user');
 var Post = require('../app/models/posts');
 var notifier = require('node-notifier');
-
+var dialog = require('dialog');
 var multer  = require('multer');
 var upload = multer({ dest: 'uploads/' });
 // app/routes.js
 module.exports = function(app, passport) {
     //home page
     app.get('/', function(req, res) {
-        res.render('index.hbs'); // load the index.ejs file
+  //  res.render('navbar.hbs'); // load the index.ejs file
+      res.render('index.hbs',{
+        layout:'layout1'
+      }); // load the index.ejs file
     });
     // app.post('/upload', upload.single('profile'), function (req, res, next) {
     //   // req.file is the `avatar` file
@@ -58,8 +61,9 @@ module.exports = function(app, passport) {
         if (req.user.local.role == 'admin') {
             Leave.find({}, function(err, doc) {
                 res.render('admin.hbs', {
+                    layout:'layout3',
                     leave: doc,
-                    user: req.user.local.name
+                    user: req.user
                 });
             })
         } else {
@@ -69,14 +73,14 @@ module.exports = function(app, passport) {
               if (req.user.profile) {
                 res.render('profile.hbs', {
                     leave: doc,
-                    user: req.user.local.name,
-                    profile:req.user.profile.img,
+                    user: req.user,
+                  //  profile:req.user.profile.img,
                     id:req.user._id
                 });
               } else {
                 res.render('profile.hbs', {
                     leave: doc,
-                    user: req.user.local.name,
+                    user: req.user,
                     id:req.user._id
                 });
               }
@@ -85,9 +89,46 @@ module.exports = function(app, passport) {
         }
     });
 
+app.get('/listofprofiles',isLoggedIn,function(req,res){
+  User.find({}, function(err, doc) {
+      res.render('listofprofiles.hbs', {
+        layout:'layout3',
+        userinfo    : doc,
+         user: req.user
+        // profile:req.user.profile.img
+      });
+  });
+});
+
+app.post('/searchresults',isLoggedIn,function(req,res){
+  User.find({'local.name':req.body.search},function(err,result){
+    if(result.length<=0){
+
+    }
+    else {
+      res.render('listofprofiles.hbs', {
+        layout:'layout3',
+        userinfo    : result,
+         user: req.user
+     });
+    }
+ });
+});
+
+app.post('/removerequest',isLoggedIn,function(req,res){
+//  res.send(req.body.id);
+console.log(req.body.id);
+  User.remove({_id:req.body.id},function(err,doc){
+      notifier.notify("Successfully deleted");
+      res.redirect('/role');
+  });
+});
+
 app.get('/post',isLoggedIn,function(req,res){
    res.render('posts.hbs',{
-     user: req.user.local.name
+    layout:'layout3',
+     user: req.user
+
    })
 });
 
@@ -117,12 +158,21 @@ app.post('/newpost',isLoggedIn,upload.single('clogo'),function(req, res,next) {
       }
   });
 });
+app.post('/deleteleave/:id',isLoggedIn,function(req,res) {
+  console.log(req.params.id);
+ Leave.remove({_id:req.params.id},function(err,doc){
+        notifier.notify("Successfully deleted");
+        res.redirect('/role');
+    });
+});
 
 app.get('/viewpost',isLoggedIn,function(req, res) {
+  console.log(req.user);
         Post.find({}, function(err, doc) {
             res.render('viewjobs.hbs', {
                 post: doc,
-              user: req.user.local.name
+              user: req.user
+              //profile:req.user.profile.img
             });
         });
       });
@@ -152,14 +202,15 @@ app.post('/applypost',function(req,res){
           res.json({err:err})
         } else {
           res.render('updateprofile.hbs',{
-            user:doc
+            user:req.user
+          //  profile:req.user.profile.img
           });
         }
       });
   });
 
     app.post('/updateprofile',isLoggedIn,upload.single('profile'),function(req, res,next) {
-      console.log(req.body);
+
         User.update({
                 _id: req.body.id
             }, {
@@ -194,7 +245,8 @@ app.post('/applypost',function(req,res){
 
     app.get('/applyleave',isLoggedIn, function(req, res) {
         res.render('applyleave',{
-          name:req.user.local.name
+          user:req.user
+        //  profile:req.user.profile.img
         });
     });
 

@@ -1,117 +1,87 @@
 <head>
 	<title>Leave Application</title>
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-
-	<style>
-		body {
-			padding-top: 30px;
-			word-wrap: break-word;
-		}
-	</style>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </head>
 
 <body>
 	<div class="container">
-
-    <div class="page animsition">
-		    <div class="page-header">
-		      <h1 class="page-title">Admin:{{user}}</h1>
-		      <div class="page-header-actions">
-		        <ol class="breadcrumb">
-		          <li><a href="/">Home</a></li>
-							<li><a href="/role">Profile</a></li>
-		          <li><a href="/logout">Logout</a></li>
-		        </ol>
-		      </div>
-		    </div>
-
-		<!-- <div class="page-header text-center">
-			<h1><span class="glyphicon glyphicon grain"></span>Admin:{{user}}</h1>
-			<a href="/logout" class="btn btn-default btn-sm">Logout</a>
-		</div> -->
-
 		<div class="row">
-			<!-- LOCAL INFORMATION -->
-			<div class="col-sm-6">
-        <h2>Post a Job</h2>
-				<div class="well">
-            <form action="/newpost" method="post" enctype="multipart/form-data">
-                <h4>Company Information</h4>
-                <div class="form-group">
-    			         Company Name <input class="form-control" id="cname" name="companyname" type="text" required/>
-    		        </div>
-                <div class="form-group">
-    			         Company Website <input class="form-control" id="cwebsite" name="companywebsite" type="text" required/>
-    		        </div>
-                <div class="form-group">
-    			        Company Email <input class="form-control" id="cmail" name="companymail" type="email"/>
-    		        </div>
-                <div class="form-group">
-    			         Company Logo <input id="clogo" name="clogo" type="file" required/>
-    		        </div>
-                <div class="form-group">
-                  Job Type <br>
-                  <input type="radio" name="jobtype" value="Full Time"> Full Time
-                  <input type="radio" name="jobtype" value="Part Time"> Part Type
-                </div>
-                <div class="form-group">
-                  Job Category  <br>
-                  <input type="checkbox" name="category" value="Software Engineer,Hardware Engineer,PHP Developer,Website Designer" checked> select all<br/>
-                  <input type="checkbox" name="category" value="Software Engineer"> Software Engineer<br>
-                  <input type="checkbox" name="category" value="Hardware Engineer">Hardware Engineer<br>
-                  <input type="checkbox" name="category" value="Website Designer">Website Designer<br>
-                  <input type="checkbox" name="category" value="PHP Developer">PHP Developer<br>
-                </div>
-                <div class="form-group">
-                   Qualification <input class="form-control" id="qualification" name="qualification" type="text" required/>
-                </div>
-                <div class="form-group">
-    			         Location <input class="form-control" id="clocation" name="clocation" type="text"/>
-    		        </div>
-                <div class="form-group">
-    			         Address<textarea class="form-control" name="caddress"></textarea>
-    		        </div>
-                <button type="submit" class="btn btn-primary btn-lg">Post</button>
-                <a type="reset" href="/role" class="btn btn-warning btn-lg">Cancel</a>
-            </form>
-        </div>
-	  </div>
+			<div class="col-md-12">
+				<div class="well bs-component">
+					<form action="/newpost" method="post" enctype="multipart/form-data" class="form-horizontal">
+						<fieldset>
+							<legend>Post A Job</legend>
+							<div class="form-group">
+								<label for="cname" class="col-md-2 control-label">Company Name</label>
+								<div class="col-md-10">
+									<input class="form-control" id="cname" name="companyname" type="text" required>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="cwebsite" class="col-md-2 control-label">Company Website</label>
+								<div class="col-md-10">
+									<input class="form-control" id="cwebsite" name="companywebsite" type="text" required/>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="cmail" class="col-md-2 control-label">Company Email</label>
+								<div class="col-md-10">
+									<input class="form-control" id="cmail" name="companymail" type="email" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="clogo" class="col-md-2 control-label">Company Logo</label>
+								<div class="col-md-10">
+									<input type="file" id="clogo" name="clogo" multiple>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-2 control-label">Job Type</label>
+								<div class="col-md-10">
+									<input type="radio" name="jobtype" id="jobtype1" value="Full Time" checked="">Full Time<br/>
+									<input type="radio" name="jobtype" id="jobtype2" value="Part Time">Part Type
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="jobcategory" class="col-md-2 control-label">Job Category</label>
+								<div class="col-md-10">
+									<input type="checkbox" name="category" value="Software Engineer,Hardware Engineer,PHP Developer,Website Designer" checked> select all<br/>
+									<input type="checkbox" name="category" value="Software Engineer"> Software Engineer<br>
+									<input type="checkbox" name="category" value="Hardware Engineer">Hardware Engineer<br>
+									<input type="checkbox" name="category" value="Website Designer">Website Designer<br>
+									<input type="checkbox" name="category" value="PHP Developer">PHP Developer<br>
+								</div>
+							</div>
 
-    <!-- <div class="col-sm-6">
-      <h2>Post a Resume</h2>
-      <div class="well">
-          <form action="/newpost" method="post">
-              <h4>Personal Information</h4>
-              <div class="form-group">
-                 Resume Title <input class="form-control" id="title" name="title" type="text"/>
-              </div>
-              <div class="form-group">
-                Resume Category  <br>
-                <input type="checkbox" name="category" value="Bike"> I have a bike<br/>
-                <input type="checkbox" name="category" value="Car" checked> I have a car<br>
-                <input type="checkbox" name="category" value="Bike"> I have a bike<br>
-                <input type="checkbox" name="category" value="Bike"> I have a bike<br>
-                <input type="checkbox" name="category" value="Bike"> I have a bike<br>
-              </div>
-              <div class="form-group">
-                Availability <input type="radio" name="availability" checked required> Full Time
-                <input type="radio" name="availability"> Part Type
-              </div>
-              <div class="form-group">
-                 First Name <input class="form-control" id="fname" name="fname" type="text"/>
-              </div>
-              <div class="form-group">
-                 Last Name <input class="form-control" id="lanme" name="lname" type="text"/>
-              </div>
-              <div class="form-group">
-                 Your Address<textarea class="form-control" name="address"></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary btn-lg">Update</button>
-              <a type="reset" href="/role" class="btn btn-warning btn-lg">Cancel</a>
-          </form>
-      </div>
-  </div> -->
-
+							<div class="form-group">
+								<label for="qualification" class="col-md-2 control-label">Qualification</label>
+								<div class="col-md-10">
+									<input class="form-control" id="qualification" name="qualification" type="text" required/>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="clocation" class="col-md-2 control-label">Location</label>
+								<div class="col-md-10">
+									<input class="form-control" id="clocation" name="clocation" type="text" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="caddress" class="col-md-2 control-label">Address</label>
+								<div class="col-md-10">
+									<textarea class="form-control" id="caddress" name="caddress"></textarea>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-md-10 col-md-offset-2">
+									<button type="submit" class="btn btn-primary btn-lg">Post</button>
+									<a type="reset" href="/role" class="btn btn-warning btn-lg">Cancel</a>
+								</div>
+							</div>
+						</fieldset>
+					</form>
+				</div>
+			</div>
+		</div>
 	</div>
 </body>

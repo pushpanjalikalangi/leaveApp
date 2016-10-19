@@ -1,30 +1,35 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
-
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-
 	<title>Leave Application</title>
+	  <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.js"></script>
+	  <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+	  <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/dataTables.material.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/dataTables.material.min.css">
+	  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.1.0/material.min.css">
+			 <script type="text/javascript" charset="utf-8">
+	 $(document).ready(function() {
+	 $('#mytable').DataTable( {
+			 columnDefs: [
+					 {
+							 targets: [ 0, 1, 2 ],
+							 className: 'mdl-data-table__cell--non-numeric'
+					 }
+			 ]
+	 } );
+} );
+	 </script>
+	<!-- //  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	//  <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> -->
 
-	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/r/bs-3.3.5/jq-2.1.4,dt-1.10.8/datatables.min.css" />
-
-	<script type="text/javascript" src="https://cdn.datatables.net/r/bs-3.3.5/jqc-1.11.3,dt-1.10.8/datatables.min.js"></script>
-	<script type="text/javascript" charset="utf-8">
-		$(document).ready(function() {
-			$('#example').DataTable();
-		});
-	</script>
 </head>
 
 <body>
 	<div class="container">
-
-
 <div class="page animsition">
-    <div class="page-header">
-      <!-- <h1 class="page-title"></h1> -->
-			<h1>{{#if profile}}
-			  <img class ="page-title" src="{{profile}}" height="50" width="50">
+    <!-- <div class="page-header">
+  			<h1>{{#if profile}}
+			  <img class ="img-circle" src="{{profile}}" height="50" width="50">
 			{{/if}}{{user}}</img></h1>
       <div class="page-header-actions">
         <ol class="breadcrumb">
@@ -34,7 +39,7 @@
           <li><a href="/logout">Logout</a></li>
         </ol>
       </div>
-    </div>
+    </div> -->
 		<!-- <div class="page-header text-center">
 			  <h1><span class="glyphicon glyphicon grain" aria-hidden="true"></span>{{user}}</h1>
 				<a href="/logout" class="btn btn-default btn-sm">Logout</a><br/><br/>
@@ -42,7 +47,7 @@
 		</div> -->
 
 {{#if leave}}
-			<table id="example" class="display" cellspacing="0" width="100%">
+			<table id="mytable" class="mdl-data-table" cellspacing="0" width="100%">
 				<thead>
 					<tr>
 						<th>Leave Type</th>
@@ -50,13 +55,14 @@
 						<th>Leave To</th>
 						<th>Reason</th>
 						<th>Status</th>
+						<th>Delete</th>
+						<!-- <th hidden="">id</th> -->
 					</tr>
 				</thead>
 				<tbody>
 					{{#each leave}}
-
 						<tr>
-
+							<!-- <td><a  type="button" href=""><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td> -->
 							<td>{{leavetype}}</td>
 							<td>{{leavefrom}}</td>
 							<td>{{leaveto}}</td>
@@ -71,27 +77,42 @@
 								{{else}}
 									Pending
 								{{/if}}
-
 							</td>
+							 <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span></button></p></td>
+							 <!-- <td><input hidden="" name="id" value="{{_id}}"</td> -->
 						</tr>
+						<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+				      <div class="modal-dialog">
+				    <div class="modal-content">
+				          <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+				        <h4 class="modal-title custom_align" id="Heading">Delete this entry</h4>
+				      </div>
+				          <div class="modal-body">
+
+				       <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Are you sure you want to delete?</div>
+
+				      </div>
+				        <div class="modal-footer ">
+               <form action="/deleteleave/{{_id}}" method="post">
+				        <button type="submit" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+								<button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+							</form>
+				      </div>
+				        </div>
+				    <!-- /.modal-content -->
+				  </div>
+				      <!-- /.modal-dialog -->
+				    </div>
+
 					{{/each}}
 				</tbody>
 			</table>
-		{{else}}
+					{{else}}
 			No Leaves Found
 		{{/if}}
     <br/>
 		<a href="/applyleave" class="btn btn-primary">Apply New Leave</a>
-
-
 	</div>
-
-	<script type="text/javascript">
-		// For demo to fit into DataTables site builder...
-		$('#example')
-			.removeClass('display')
-			.addClass('table table-striped table-bordered');
-	</script>
 </body>
-
 </html>

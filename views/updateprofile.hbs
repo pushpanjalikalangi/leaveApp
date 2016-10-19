@@ -1,76 +1,90 @@
 <html>
-  <head>
+
+<head>
     <title>leave application</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-  	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-    <style>
-  		body 		{ padding-top:80px; }
-  	</style>
-    <script type="text/javascript">
-      document.getElementById('country').value = {{user.contry}};
-    </script>
-  </head>
-  <body>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
     <div class="container">
-      <div class="page animsition">
-          <div class="page-header">
-            <h1 class="page-title">{{user.local.name}}</h1>
-            <div class="page-header-actions">
-              <ol class="breadcrumb">
-                <li><a href="/">Home</a></li>
-                <li><a href="/role">Profile</a></li>
-                <li><a href="/viewpost">View New Posts</a></li>
-                <li><a href="/logout">Logout</a></li>
-              </ol>
-            </div>
-          </div>
-      <!-- <div class="page-header text-center">
-    		<h1><span class="fa fa-anchor"></span> {{user.local.name}}</h1>
-    		<a href="/logout" class="btn btn-default btn-sm">Logout</a>
-    	</div> -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="well bs-component">
+                    <form action='/updateprofile' method='post' enctype="multipart/form-data" class="form-horizontal">
+                        <fieldset>
+                            <legend>Update Profile</legend>
+                            <input type="hidden" name="id" value="{{user._id}}">
+                            <div class="form-group">
+                                <label for="fname" class="col-md-2 control-label">First Name</label>
+                                <div class="col-md-10">
+                                    <input class="form-control" id="fname" name="fname" type="text" value="{{user.fname}}" maxlength="10" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="lname" class="col-md-2 control-label">Last Name</label>
+                                <div class="col-md-10">
+                                    <input class="form-control" id="lname" name="lname" type="text" value="{{user.lname}}" maxlength="10" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="pno" class="col-md-2 control-label">Phone Number</label>
+                                <div class="col-md-10">
+                                    <input class="form-control" id="pno" name="pno" type="number" value="{{user.phonenumber}}" maxlength="10" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                              <label class="col-md-2 control-label">Gender</label>
+                              <div class="col-md-10">
+                                <input type="radio" name="gender" value="Male" checked> Male<br/>
+                                <input type="radio" name="gender" value="Female"> Female
+                            </div>
+                          </div>
+                          <div class="form-group">
+                              <label for="pno" class="col-md-2 control-label">Address</label>
+                              <div class="col-md-10">
+                                  <input class="form-control" id="address" name="address" type="text" value="{{user.address}}" required>
+                              </div>
+                          </div>
 
-    	<div class="row">
-        <div class="col-sm-6">
-           <div class="well">
-             <h3>Profile Update</h3>
-             <form  action='/updateprofile' method='post' enctype="multipart/form-data">
-               <input type="hidden" name="id" value="{{user._id}}">
-            <div class="form-group">
-              First Name <input type="text" name="fname" value="{{user.fname}}" maxlength="10" required>
-              last Name <input type="text" name="lname" value="{{user.lname}}" maxlength="10" required>
+                            <div class="form-group">
+                              <label for="country" class="col-md-2 control-label">State</label>
+                                <div class="col-md-10">
+                                 <select id="country" name="country" class="form-control">
+        				                  <option value="select">select</option>
+        				                  <option value="ap">Andhra Pradesh</option>
+        				                  <option value="ts">Telangana</option>
+        			                   </select>
+                            </div>
+                          </div>
+                            <div class="form-group">
+                              <label for="country" class="col-md-2 control-label">Zip Code</label>
+                              <div class="col-md-10">
+                              <input type="number" name="zipcode" class="form-control" value="{{user.zipcode}}" required>
+                            </div>
+                          </div>
+                            <div class="form-group">
+                              <label for="country" class="col-md-2 control-label">Language</label>
+                              <div class="col-md-10">
+                                 <input type="checkbox" name="language" value="English" checked> English<br/>
+                                <input type="checkbox" name="language" value="Non English"> Non English
+                            </div>
+                          </div>
+                            <div class="form-group">
+                              <label for="country" class="col-md-2 control-label">Upload Profile Picture</label>
+                              <div class="col-md-10">
+                                <input type='file' name='profile' type="image/jpeg" accept="application/x-zip-compressed,image/*">
+                            </div>
+                          </div>
+                            <div class="form-group">
+                            	<div class="col-md-10 col-md-offset-2">
+                            <button type="submit" class="btn btn-primary btn-lg">Update</button>
+                            <a type="reset" href="/role" class="btn btn-warning btn-lg">Cancel</a>
+                          </div>
+                        </div>
+                    </form>
+                </div>
+              </div>
             </div>
-            <div class="form-group">
-              Phone Number <input type="number" name="pno" value="{{user.phonenumber}}" required>
-            </div>
-            <div class="form-group">
-              Gender <input type="radio" name="gender" value="Male" checked> Male
-              <input type="radio" name="gender" value="Female" > Female
-            </div>
-
-            <div class="form-group">
-               Address<input type="text-area"  name="address" value="{{user.address}}">
-            </div>
-            <div class="form-group">
-              State <select id="country" name="country">
-        				  <option value="select">select</option>
-        				  <option value="ap">Andhra Pradesh</option>
-        				  <option value="ts">Telangana</option>
-        			</select>
-            </div>
-            <div class="form-group">
-              Zip Code <input type="number" name="zipcode" value="{{user.zipcode}}" required>
-            </div>
-            <div class="form-group">
-              Language <input type="checkbox" name="language" value="English" checked> English
-              <input type="checkbox" name="language" value="Non English" checked> Non English
-            </div>
-            <div class="form-group">
-               <input type='file' name='profile' type="image/jpeg" accept="application/x-zip-compressed,image/*">
-           </div>
-            <button type="submit" class="btn btn-primary btn-lg">Update</button>
-            <a type="reset" href="/role" class="btn btn-warning btn-lg">Cancel</a>
-          </form>
-       </div>
-    </div>
-   </div>
-  </body>
+        </div>
+</body>

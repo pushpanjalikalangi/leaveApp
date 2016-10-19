@@ -1,21 +1,74 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+/*body {
+  padding-top: 10px;
 }
-
-a {
-  color: #00B7FF;
+.navbar-default {
+background-color: #4285f4;
+border-color: #6b94db;
+width: 1000px;
+left:200px;
+height: 52px;
 }
-body {
-  background: url(http://lorempixel.com/1920/1920/city/9/) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+.navbar-default .navbar-brand {
+color: #ecf0f1;
 }
-
-.panel-default {
-opacity: 0.9;
-margin-top:30px;
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+color: #ecdbff;
 }
-.form-group.last { margin-bottom:0px; }
+.navbar-default .navbar-text {
+color: #ecf0f1;
+}
+.navbar-default .navbar-nav > li > a {
+color: #ecf0f1;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+color: #ecdbff;
+}
+    .navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+color: #ecdbff;
+background-color: #2866c9;
+}
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+color: #ecdbff;
+background-color: #8e44ad;
+}
+.navbar-default .navbar-toggle {
+border-color: #8e44ad;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+background-color: #8e44ad;
+}
+.navbar-default .navbar-toggle .icon-bar {
+background-color: #ecf0f1;
+}
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+border-color: #ecf0f1;
+}
+.navbar-default .navbar-link {
+color: #ecf0f1;
+}
+.navbar-default .navbar-link:hover {
+color: #ecdbff;
+}
+@media (max-width: 767px) {
+.navbar-default .navbar-nav .open .dropdown-menu > li > a {
+  color: #ecf0f1;
+}
+.navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+.navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+  color: #ecdbff;
+}
+.navbar-default .navbar-nav .open .dropdown-menu > .active > a,
+.navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
+.navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+  color: #ecdbff;
+  background-color: #8e44ad;
+}
+}*/

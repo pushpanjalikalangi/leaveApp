@@ -1,0 +1,107 @@
+<html>
+  <head>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+
+    <style type="text/css">
+    /*.glyphicon {  margin-bottom: 10px;margin-right: 10px;}*/
+
+   small {
+     display: block;
+     line-height: 1.428571429;
+     color: #999;
+   }
+     .enjoy-css {
+       width: 250px;
+       height: 30px;
+       cursor: pointer;
+       margin: 0 auto;
+       border: 0.5px solid rgb(232, 238, 241);
+       border-radius: 28px;
+       font: normal 14px/28px "Advent Pro", Helvetica, sans-serif;
+       color: rgb(119, 126, 128);
+       text-align: center;
+       -o-text-overflow: clip;
+       text-overflow: clip;
+       letter-spacing: 1px;
+       /*background: rgba(0,0,0,0);*/
+     }
+      .container {
+  display: block;
+  width: 70%;
+  margin: 20px auto 0 auto;
+  background: #fff;
+  height: 100vh;
+}
+     /* enable absolute positioning */
+     .enjoy-cssx {
+       width: 250px;
+       height: 29px;
+       border-radius: 28px;
+       font: normal 14px/28px "Advent Pro", Helvetica, sans-serif;
+       /*background: rgb(255, 255, 255);*/
+     }
+
+     .inner-addon {
+         position: relative;
+     }
+
+     /* style icon */
+     .inner-addon .glyphicon {
+       position: absolute;
+       padding: 8px;
+       pointer-events: none;
+     }
+
+     /* align icon */
+     .left-addon .glyphicon  { left:  0px;}
+     .right-addon .glyphicon { right: 10px;}
+
+     /* add padding  */
+     .left-addon input  { padding-left:  30px; }
+     .right-addon input { padding-right: 30px; }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+            <div class="row">
+              <form id="custom-search-form" action="/searchresults" method="post" class="form-search form-horizontal pull-right">
+                <div class="inner-addon right-addon enjoy-cssx">
+                  <i class="glyphicon glyphicon-search "></i>
+                  <input type="text" placeholder="Search" name="search" class="form-control enjoy-css" />
+              </div>
+            </form>
+           </div>
+       	{{#each userinfo}}
+       <div class="col-sm-4">
+           <div class="well well-sm">
+             <form action="" method="post" id="mytable" class="table table-bordred table-striped">
+               <div class="row">
+                 <input type="hidden" name="id" value="{{_id}}">
+                   <div class="col-sm-6">
+                       <img src="{{profile.img}}" height="200" width="200" class="img-rounded img-responsive" />
+                   </div>
+                   <div class="col-sm-6">
+                       <h4>{{local.name}}</h4>
+                       <small><cite title="address">{{address}}, {{country}}<i class="glyphicon glyphicon-map-marker">
+                       </i></cite></small>
+                       <p>
+                           <i class="glyphicon glyphicon-user" margin-bottom="10px" margin-right="10px"></i>{{local.role}}
+                           <br />
+                           <i class="glyphicon glyphicon-phone"></i><a>{{phonenumber}}</a>
+                           <br />
+                           <div class="row">
+                             <!-- <a type="submit" class="btn btn-success">Accept</a> -->
+                             <button class="btn btn-warning">Remove</button>
+                          </div>
+                   </div>
+               </div>
+             </form>
+           </div>
+       </div>
+       {{/each}}
+   </div>
+</div>
+  </body>
+</html>

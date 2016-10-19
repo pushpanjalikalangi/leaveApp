@@ -1,142 +1,225 @@
 <head>
 	<title>Leave Application</title>
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+	<!-- // <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	// <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	// <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" /> -->
+
+	 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	 <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript">
+		(function() {
+			'use strict';
+			var $ = jQuery;
+			$.fn.extend({
+				filterTable: function() {
+					return this.each(function() {
+						$(this).on('keyup', function(e) {
+							$('.filterTable_no_results').remove();
+							var $this = $(this),
+								search = $this.val().toLowerCase(),
+								target = $this.attr('data-filters'),
+								$target = $(target),
+								$rows = $target.find('tbody tr');
+
+							if (search == '') {
+								$rows.show();
+							} else {
+								$rows.each(function() {
+									var $this = $(this);
+									$this.text().toLowerCase().indexOf(search) === -1 ? $this.hide() : $this.show();
+								})
+								if ($target.find('tbody tr:visible').size() === 0) {
+									var col_count = $target.find('tr').first().find('td').size();
+									var no_results = $('<tr class="filterTable_no_results"><td colspan="' + col_count + '">No results found</td></tr>')
+									$target.find('tbody').append(no_results);
+								}
+							}
+						});
+					});
+				}
+			});
+			$('[data-action="filter"]').filterTable();
+		})(jQuery);
+
+		$(function() {
+			// attach table filter plugin to inputs
+			$('[data-action="filter"]').filterTable();
+
+			$('.container').on('click', '.panel-heading span.filter', function(e) {
+				var $this = $(this),
+					$panel = $this.parents('.panel');
+
+				$panel.find('.panel-body').slideToggle();
+				if ($this.css('display') != 'none') {
+					$panel.find('.panel-body input').focus();
+				}
+			});
+			$('[data-toggle="tooltip"]').tooltip();
+		})
+	</script>
 
 	<style>
-		body {
-			padding-top: 80px;
-			word-wrap: break-word;
+		.row {
+			margin-top: 40px;
+			padding: 0 10px;
+		}
+
+		.clickable {
+			cursor: pointer;
+		}
+
+		.panel-heading div {
+			margin-top: -18px;
+			font-size: 15px;
+		}
+
+		.panel-heading div span {
+			margin-left: 5px;
+		}
+
+		.panel-body {
+			display: none;
 		}
 	</style>
 </head>
 
 <body>
 	<div class="container">
-		<div class="page animsition">
-		    <div class="page-header">
-		      <h1 class="page-title">Admin:{{user}}</h1>
-		      <div class="page-header-actions">
-		        <ol class="breadcrumb">
-		          <li><a href="/">Home</a></li>
-							<li><a href="/post">Post New Job</a></li>
-		          <li><a href="/logout">Logout</a></li>
-		        </ol>
-		      </div>
-		    </div>
-		<!-- <div class="page-header text-center">
-			<h1><span class="glyphicon glyphicon grain"></span>Admin:{{user}}</h1>
-			<a href="/logout" class="btn btn-default btn-sm">Logout</a>
-		</div> -->
-
 		<div class="row">
+			<div class="col-md-12">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h3 class="panel-title"><b><i>Request for Approval</b></i></h3>
+						<div class="pull-right">
+							<span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
+							<i class="glyphicon glyphicon-filter"></i>
+						</span>
+						</div>
+					</div>
+					<div class="panel-body">
+						<input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Filter Users" />
+					</div>
+					<table class="table table-hover" id="dev-table">
+						<tr>
+							<th>User Name</th>
+							<th>Leave Type</th>
+							<th>Leave From</th>
+							<th>Leave To</th>
+							<th>Reason</th>
+							<th>Accept</th>
+							<th>Reomve</th>
+						</tr>
+						{{#each leave}}
+							{{#unless notify}}
+								<tr>
+									<td>{{username}}</td>
+									<td>{{leavetype}}</td>
+									<td>{{leavefrom}}</td>
+									<td>{{leaveto}}</td>
+									<td>{{reason}}</td>
+									<td>
+										<form action="/approve/{{_id}}" method="POST"><button type="submit" class="label label-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+										</form>
+									</td>
+									<td>
+										<form action="/reject/{{_id}}" method="POST">
+											<button type="submit" class="label label-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+										</form>
+									</td>
+								</tr>
+							{{/unless}}
+						{{/each}}
+					</table>
+				</div>
+			</div>
 
-			<!-- LOCAL INFORMATION -->
-			<div class="col-sm-6">
-				<div class="well">
-					<h2>Request for Approval</h2>
+		<div class="col-sm-12">
+			<div class="panel panel-success">
+				<div class="panel-heading">
+					<h3 class="panel-title"><b><i>Accepted List</i></b></h3>
+					<div class="pull-right">
+						<span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
+					<i class="glyphicon glyphicon-filter"></i>
+				</span>
+					</div>
+				</div>
+				<div class="panel-body">
+					<input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Filter Users" />
+				</div>
+				<table class="table table-hover" id="dev-table">
 
-					<div class="form-group">
-	<table border="1" >
-		<!--false-->
-		<tr>
-			<th>User Name</th>
-			<th>Leave Type</th>
-			<th>Leave From</th>
-			<th>Leave To</th>
-			<th>Reason</th>
-			<th>Status</th>
-		</tr>
-		{{#each leave}}
-			{{#unless notify}}
+					<tr>
+						<th>User Name</th>
+						<th>Leave Type</th>
+						<th>Leave From</th>
+						<th>Leave To</th>
+						<th>Reason</th>
+						<th>Status</th>
+					</tr>
+					{{#each leave}}
+						{{#if notify}}
+							{{#if status}}
+								<tr>
+									<td>{{username}}</td>
+									<td>{{leavetype}}</td>
+									<td>{{leavefrom}}</td>
+									<td>{{leaveto}}</td>
+									<td>{{reason}}</td>
+									<td>
+										{{#if status}} Accept{{/if}}
+									</td>
+								</tr>
+							{{/if}}
+						{{/if}}
+					{{/each}}
+				</table>
+			</div>
+		</div>
+
+
+	<div class="col-sm-12">
+		<div class="panel panel-danger">
+			<div class="panel-heading">
+				<h3 class="panel-title"><b><i>Rejected List</i></b></h3>
+				<div class="pull-right">
+					<span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
+					<i class="glyphicon glyphicon-filter"></i>
+				</span>
+				</div>
+			</div>
+			<div class="panel-body">
+				<input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Filter Users" />
+			</div>
+			<table class="table table-hover" id="dev-table">
 				<tr>
-					<td>{{username}}</td>
-					<td>{{leavetype}}</td>
-					<td>{{leavefrom}}</td>
-					<td>{{leaveto}}</td>
-					<td>{{reason}}</td>
-					<form action="/approve/{{_id}}" method="POST">
-						<td><button type="submit" class="label label-success">Accept</button>
-						</form>
-						<form action="/reject/{{_id}}" method="POST">
-								<button type="submit" class="label label-danger">Reject</button>
-            </form>
-							</td>
-										</tr>
-										{{/unless}}
-										{{/each}}
-                           </table>
-                           </div>
-
-			</div>
+					<th>User Name</th>
+					<th>Leave Type</th>
+					<th>Leave From</th>
+					<th>Leave To</th>
+					<th>Reason</th>
+					<th>Status</th>
+				</tr>
+				{{#each leave}}
+					{{#if notify}}
+						{{#unless status}}
+							<tr>
+								<td>{{username}}</td>
+								<td>{{leavetype}}</td>
+								<td>{{leavefrom}}</td>
+								<td>{{leaveto}}</td>
+								<td>{{reason}}</td>
+								<td>
+									{{#unless status}} Reject {{/unless}}
+								</td>
+							</tr>
+						{{/unless}}
+					{{/if}}
+				{{/each}}
+			</table>
 		</div>
-
-		<div class="col-sm-6">
-			<div class="well">
-				<h2>Accepted List</h2>
-                        <div class="form-group">
-			               <table border="1">
-							         <tr>
-										<th>User Name</th>
-										<th>Leave Type</th>
-										<th>Leave From</th>
-										<th>Leave To</th>
-										<th>Reason</th>
-										<th>Status</th>
-										</tr>
-									{{#each leave}}
-							  		 {{#if notify}}
-										   {{#if status}}
-												 <tr>
-													<td>{{username}}</td>
-													<td>{{leavetype}}</td>
-													<td>{{leavefrom}}</td>
-													<td>{{leaveto}}</td>
-													<td>{{reason}}</td>
-													<td>{{#if status}} Accept{{/if}}</td>
-											 	</tr>
-									 	{{/if}}
-									 {{/if}}
-							  {{/each}}
-                           </table>
-                           </div>
-			</div>
-		</div>
-
-		<div align="center" class="col-sm-8">
-			<div class="well">
-				<h2>Rejected List</h2>
-                        <div class="form-group">
-			               <table border="1">
-							   <!--false-->
-							         <tr>
-										<th>User Name</th>
-										<th>Leave Type</th>
-										<th>Leave From</th>
-										<th>Leave To</th>
-										<th>Reason</th>
-										<th>Status</th>
-										</tr>
-									{{#each leave}}
-							  		 {{#if notify}}
-										   {{#unless status}}
-													<tr>
-														<td>{{username}}</td>
-														<td>{{leavetype}}</td>
-														<td>{{leavefrom}}</td>
-														<td>{{leaveto}}</td>
-														<td>{{reason}}</td>
-														<td>{{#unless status}} Reject {{/unless}}</td>
-													</tr>
-										  {{/unless}}
-										{{/if}}
-										{{/each}}
-                           </table>
-                           </div>
-			</div>
-		</div>
+	</div>
 
 	</div>
 	</div>
-
 </body>
