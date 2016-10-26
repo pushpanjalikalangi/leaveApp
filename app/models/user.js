@@ -21,7 +21,8 @@ var userSchema = mongoose.Schema({
     country:String,
     zipcode:Number,
     language:String,
-    profile:Object
+    profile:Object,
+    auth:Boolean
 
 });
 

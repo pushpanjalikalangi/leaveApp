@@ -14,7 +14,7 @@ var fs = require('fs');
 var hbs = require('hbs');
 
 hbs.registerPartial('navbar', fs.readFileSync(__dirname + '/views/navbar.hbs', 'utf8'));
-hbs.registerPartial('navbar2', fs.readFileSync(__dirname + '/views/navbar2.hbs', 'utf8'));// hbs.registerPartial('login', fs.readFileSync(__dirname + '/views/login.hbs', 'utf8'));
+hbs.registerPartial('navbar2', fs.readFileSync(__dirname + '/views/navbar2.hbs', 'utf8'));
 //hbs.registerPartials(__dirname + '/views/partials');
 // configuration ===============================================================
 mongoose.connect(configDB.url); // connect to our database

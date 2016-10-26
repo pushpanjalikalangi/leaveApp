@@ -1,0 +1,178 @@
+<html>
+
+<head>
+    <title>leave application</title>
+
+</head>
+
+<body>
+    <div class="col-md-2">
+        <div class='row-fluid'>
+            <div class='sidebar'>
+                <h3 class="menu-heading">
+      Personal settings
+    </h3>
+                <ul class="nav nav-tabs nav-stacked">
+                    <li><a href='#changename'>Name</a></li>
+                    <li><a href='#changeusername'>User Name</a></li>
+                    <li><a href='#changepassword'>Password</a></li>
+                    <li><a href='#deleteaccount'>Delete Account</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="padding-top=30px">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="well bs-component" id="changename">
+                    <form action='/changingname' method='post' class="form-horizontal">
+                        <fieldset>
+                            <legend>Change Name</legend>
+                            <input type="hidden" name="id" value="{{user._id}}">
+                            <div class="form-group">
+                                <label for="fname" class="col-md-2 control-label">First Name</label>
+                                <div class="col-md-10">
+                                    <input id="fname" name="fname" class="form-control" type="text" value="{{user.fname}}" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="mname" class="col-md-2 control-label">Middle Name</label>
+                                <div class="col-md-10">
+                                    <input id="mname" name="mname" class="form-control" type="text" placeholder="optional">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="lname" class="col-md-2 control-label">Last Name</label>
+                                <div class="col-md-10">
+                                    <input id="lname" name="lname" class="form-control" type="text" value="{{user.lname}}" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-10 col-md-offset-2">
+                                    <button type="submit" class="btn btn-primary">Change</button>
+                                    <button type="reset" href="/role" class="btn btn-warning">Cancel</button>
+                                </div>
+                            </div>
+                    </form>
+                </div>
+                <div class="well bs-component" id="changeusername">
+                    <fieldset>
+                        <legend>Change User Name</legend>
+                        <input type="hidden" name="id" value="{{user._id}}">
+                        <div class="form-group">
+                            <label for="old" class="col-md-2 control-label">Username</label>
+                            <div class="col-md-10">
+                                <input id="username" name="username" class="form-control" type="text" value="{{user.local.name}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10 col-md-offset-2">
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">Change</button>
+                                <a type="reset" href="/role" class="btn btn-warning">Cancel</a>
+                            </div>
+                        </div>
+                        <!-- </form> -->
+                </div>
+                <div class="well bs-component" id="changepassword">
+                    <form action='/changingpassword' method='POST' class="form-horizontal" onsubmit="return checkForm(this);">
+                        <fieldset>
+                            <legend>Change Password</legend>
+                            <input type="hidden" name="id" value="{{user._id}}">
+                            <div class="form-group">
+                                <label for="old" class="col-md-2 control-label">Current</label>
+                                <div class="col-md-10">
+                                    <input id="old" name="old" class="form-control" type="text" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="new" class="col-md-2 control-label">New</label>
+                                <div class="col-md-10">
+                                    <input id="new" name="new" class="form-control" type="text" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="renew" class="col-md-2 control-label">Re-type new</label>
+                                <div class="col-md-10">
+                                    <input id="renew" name="renew" class="form-control" type="text" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-10 col-md-offset-2">
+                                    <button type="submit" class="btn btn-primary">Change</button>
+                                    <a type="reset" href="/role" class="btn btn-warning">Cancel</a>
+                                </div>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <!--Content-->
+            <div class="modal-content">
+                <!--Header-->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Are you sure you want to do this?<br/></h4>
+                </div>
+                <!--Body-->
+                <div class="modal-body">
+                  <form action="/changeusername" method="post">
+                  <br/><h5>Please confirm with your Password</h5>
+                  <input type="password" name="password" placeholder="*********">
+                </div>
+                <!--Footer-->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                  </form>
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+    <script type="text/javascript">
+        function checkForm(form) {
+            if (form.new.value != "" && form.new.value == form.renew.value) {
+                if (form.new.value.length < 6) {
+                    alert("Error: Password must contain at least six characters!");
+                    form.new.focus();
+                    return false;
+                }
+                if (form.new.value == form.name.value) {
+                    alert("Error: Password must be different from Username!");
+                    form.new.focus();
+                    return false;
+                }
+                re = /[0-9]/;
+                if (!re.test(form.new.value)) {
+                    alert("Error: password must contain at least one number (0-9)!");
+                    form.new.focus();
+                    return false;
+                }
+                re = /[a-z]/;
+                if (!re.test(form.new.value)) {
+                    alert("Error: password must contain at least one lowercase letter (a-z)!");
+                    form.new.focus();
+                    return false;
+                }
+                re = /[A-Z]/;
+                    alert("Error: password must contain at least one uppercase letter (A-Z)!");
+                    form.new.focus();
+                    return false;
+                }
+                return true
+            } else {
+                alert("Error: Please check that you've entered and confirmed your password!");
+                if (!re.test(form.new.value)) {
+                form.new.focus();
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>
