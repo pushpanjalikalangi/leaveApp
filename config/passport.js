@@ -19,92 +19,56 @@ module.exports = function(passport) {
             done(err, user);
         });
     });
-
     //signup
     passport.use('local-signup', new LocalStrategy({
-            // by default, local strategy uses username and password, we will override with email
-
             usernameField: 'name',
             passwordField: 'password',
             roleField: 'role',
             passReqToCallback: true // allows us to pass back the entire request to the callback
         },
         function(req, name, password, role, done) {
-            console.log(role);
-
-            // find a user whose email is the same as the forms email
-            // we are checking to see if the user trying to login already exists
-            User.findOne({
-                'local.name': name
-            }, function(err, user) {
-                // if there are any errors, return the error
-                if (err)
-                    return done(err);
-
-                // check to see if theres already a user with that email
-                if (user) {
-                    return done(null, false, {
-                        message: 'That email is already taken.'
-                    });
-                } else {
-
-                    // if there is no user with that email
-                    // create the user
-                    var newUser = new User();
-
-                    // set the user's local credentials
-                    newUser.local.role = role;
-                    newUser.local.name = name;
-                    newUser.local.password = newUser.generateHash(password); // use the generateHash function in our user model
-
-                    // save the user
-                    newUser.save(function(err) {
-                        if (err)
-                            throw err;
-                        return done(null, newUser);
-                    });
-                }
-
+            process.nextTick(function() {
+                User.findOne({
+                    'local.name': name
+                }, function(err, user) {
+                    if (err)
+                        return done(err);
+                    if (user)
+                        return done(null, false);
+                     else {
+                        var newUser = new User();
+                        newUser.local.role = role;
+                        newUser.local.name = name;
+                        newUser.local.password = newUser.generateHash(password); // use the generateHash function in
+                        newUser.save(function(err) {
+                            if (err)
+                                throw err;
+                            return done(null, newUser);
+                        });
+                    }
+                });
             });
-
         }));
     //login
     passport.use('local-login', new LocalStrategy({
-            // by default, local strategy uses username and password, we will override with email
             usernameField: 'name',
             passwordField: 'password',
             roleField: 'role',
             passReqToCallback: true // allows us to pass back the entire request to the callback
         },
         function(req, name, password, role, done) { // callback with email and password from our form
-
-            // find a user whose email is the same as the forms email
-            // we are checking to see if the user trying to login already exists
             User.findOne({
                 'local.name': name
             }, function(err, user) {
-                // if there are any errors, return the error before anything else
-                if (err) {
-                    console.log('Error in SignUp: ' + err);
+                if (err)
                     return done(err);
-                }
-
-                // if no user is found, return the message
-                if (!user){
-                console.log('User Not Found with username ');
-        return done(null, false);
-                    } // req.flash is the way to set flashdata using connect-flash
-
-                // if the user is found but the password is wrong
-                if (!user.validPassword(password)){
-                console.log('Invalid Password');
-        return done(null, false);
-                    }// create the loginMessage and save it to session as flashdata
-
-                // all is well, return successful user
+                if (!user)
+                    return done(null, false);
+                if (!user.validPassword(password)) {
+                    return done(null, false);
+                } // create the loginMessage and save it to session as flashdata
                 return done(null, user);
             });
-
         }));
 
     var isValidPassword = function(user, password) {
@@ -114,5 +78,4 @@ module.exports = function(passport) {
     var createHash = function(password) {
         return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
     };
-
 };

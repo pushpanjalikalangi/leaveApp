@@ -2,16 +2,56 @@
 
 <head>
     <title>leave application</title>
-
+    <!-- // <script type="text/javascript">
+    //   function validateForm(form) {
+    //   }
+    // </script> -->
+    <script type="text/javascript">
+        function checkForm(form) {
+            if (form.password.value != "" && form.password.value == form.renew.value) {
+                if (form.password.value.length < 6) {
+                    alert("Error: Password must contain at least six characters!");
+                    form.password.focus();
+                    return false;
+                }
+                if (form.password.value == form.name.value) {
+                    alert("Error: Password must be different from Username!");
+                    form.password.focus();
+                    return false;
+                }
+                re = /[0-9]/;
+                if (!re.test(form.password.value)) {
+                    alert("Error: password must contain at least one number (0-9)!");
+                    form.password.focus();
+                    return false;
+                }
+                re = /[a-z]/;
+                if (!re.test(form.password.value)) {
+                    alert("Error: password must contain at least one lowercase letter (a-z)!");
+                    form.password.focus();
+                    return false;
+                }
+                re = /[A-Z]/;
+                if (!re.test(form.password.value)) {
+                    alert("Error: password must contain at least one uppercase letter (A-Z)!");
+                    form.password.focus();
+                    return false;
+                }
+                return true
+            } else {
+                alert("Error: Please check that you've entered and confirmed your password!");
+                form.password.focus();
+                return false;
+            }
+        }
+    </script>
 </head>
 
 <body>
     <div class="col-md-2">
         <div class='row-fluid'>
             <div class='sidebar'>
-                <h3 class="menu-heading">
-      Personal settings
-    </h3>
+                <h3 class="menu-heading">Personal settings</h3>
                 <ul class="nav nav-tabs nav-stacked">
                     <li><a href='#changename'>Name</a></li>
                     <li><a href='#changeusername'>User Name</a></li>
@@ -56,22 +96,23 @@
                     </form>
                 </div>
                 <div class="well bs-component" id="changeusername">
-                    <fieldset>
-                        <legend>Change User Name</legend>
-                        <input type="hidden" name="id" value="{{user._id}}">
-                        <div class="form-group">
-                            <label for="old" class="col-md-2 control-label">Username</label>
-                            <div class="col-md-10">
-                                <input id="username" name="username" class="form-control" type="text" value="{{user.local.name}}">
+                    <form action="/changeusername" method="post" class="form-horizontal">
+                        <fieldset>
+                            <legend>Change User Name</legend>
+                            <input type="hidden" name="id" value="{{user._id}}">
+                            <div class="form-group">
+                                <label for="old" class="col-md-2 control-label">Username</label>
+                                <div class="col-md-10">
+                                    <input id="username" name="username" class="form-control" type="text" value="{{user.local.name}}">
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-10 col-md-offset-2">
-                                <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">Change</button>
-                                <a type="reset" href="/role" class="btn btn-warning">Cancel</a>
+                            <div class="form-group">
+                                <div class="col-md-10 col-md-offset-2">
+                                    <button class="btn btn-primary">Change</button>
+                                    <a type="reset" href="/role" class="btn btn-warning">Cancel</a>
+                                </div>
                             </div>
-                        </div>
-                        <!-- </form> -->
+                    </form>
                 </div>
                 <div class="well bs-component" id="changepassword">
                     <form action='/changingpassword' method='POST' class="form-horizontal" onsubmit="return checkForm(this);">
@@ -87,7 +128,7 @@
                             <div class="form-group">
                                 <label for="new" class="col-md-2 control-label">New</label>
                                 <div class="col-md-10">
-                                    <input id="new" name="new" class="form-control" type="text" required>
+                                    <input id="new" name="password" class="form-control" type="text" required>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -104,75 +145,76 @@
                             </div>
                     </form>
                 </div>
+                <div class="well bs-component" id="deleteaccount">
+                    <!-- <form action="/deleteaccount" method="post" class="form-horizontal"> -->
+                    <fieldset>
+                        <legend style="color:red;">Delete Account</legend>
+                        <input type="hidden" name="id" value="{{user._id}}">
+                        <div class="form-group">
+                            <b><i>Once you delete your account, there is no going back. Please be certain.</i></b>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                <button class="btn btn-danger" data-toggle="modal" data-target="#myModal">Delete Your Account</button>
+                            </div>
+                        </div>
+                        <!-- </form> -->
+                </div>
+
             </div>
         </div>
     </div>
 
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
-            <!--Content-->
             <div class="modal-content">
-                <!--Header-->
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <h4 class="modal-title" id="myModalLabel">Are you sure you want to do this?<br/></h4>
+                    <h4 class="modal-title" id="myModalLabel">Are you sure you want to do this?</h4><hr/>
                 </div>
-                <!--Body-->
                 <div class="modal-body">
-                  <form action="/changeusername" method="post">
-                  <br/><h5>Please confirm with your Password</h5>
-                  <input type="password" name="password" placeholder="*********">
+                    <div class="alert">
+                      <strong><span class="glyphicon glyphicon-alert" aria-hidden="true"></span> This is extremely important.</strong>
+                    </div>
+                    <div>
+                      <p>We will immediately delete your account along with all of your Details.</p>
+
+                      <p>You will no longer be needed, and your username will not be available to anyone on this application.</p>
+                    </div>
+                    <hr/>
+                    <form action='/deleteaccount' method='POST' class="form-horizontal">
+                            <legend>Confirm with Username and Password</legend>
+                            <input type="hidden" name="id" value="{{user._id}}">
+                            <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="new" class="control-label"><b>Your Username</b></label><br/>
+                                    <input id="new" name="username" class="form-control" type="text" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="renew" class="control-label"><b>Confirm Your Password</b></label><br/>
+                                    <input id="renew" name="password" class="form-control" type="password" required>
+                            </div>
+                          </div>
                 </div>
-                <!--Footer-->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
-                  </form>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Delete</button>
                 </div>
+                </form>
             </div>
-            <!--/.Content-->
         </div>
     </div>
-    <script type="text/javascript">
-        function checkForm(form) {
-            if (form.new.value != "" && form.new.value == form.renew.value) {
-                if (form.new.value.length < 6) {
-                    alert("Error: Password must contain at least six characters!");
-                    form.new.focus();
-                    return false;
-                }
-                if (form.new.value == form.name.value) {
-                    alert("Error: Password must be different from Username!");
-                    form.new.focus();
-                    return false;
-                }
-                re = /[0-9]/;
-                if (!re.test(form.new.value)) {
-                    alert("Error: password must contain at least one number (0-9)!");
-                    form.new.focus();
-                    return false;
-                }
-                re = /[a-z]/;
-                if (!re.test(form.new.value)) {
-                    alert("Error: password must contain at least one lowercase letter (a-z)!");
-                    form.new.focus();
-                    return false;
-                }
-                re = /[A-Z]/;
-                    alert("Error: password must contain at least one uppercase letter (A-Z)!");
-                    form.new.focus();
-                    return false;
-                }
-                return true
-            } else {
-                alert("Error: Please check that you've entered and confirmed your password!");
-                if (!re.test(form.new.value)) {
-                form.new.focus();
-                return false;
-            }
-        }
-    </script>
+    <script type="text/javascript" src="flash/flash-client.js"></script> 
 </body>
+<style>
+  .alert{
+    width: 530px;
+    height: 50px;
+    color:#9f2d41 ;
+    background-color: #ffc6d0;
+
+  }
+</style>
 </html>

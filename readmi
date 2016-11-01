@@ -1,0 +1,2 @@
+"start": "forever start -a -l /home/dev/leaveApp/LOGFILE --watchIgnoreDotFiles --minUptime 1000 --spinSleepTime 1000 ./bin/www",
+"stop":"forever stop ./bin/www"

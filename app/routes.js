@@ -7,16 +7,21 @@ var Post = require('../app/models/posts');
 var notifier = require('node-notifier');
 var multer = require('multer');
 var bcrypt = require('bcrypt');
+var nodemailer = require('nodemailer');
+var JSAlert = require("js-alert");
 var upload = multer({
     dest: 'uploads/'
 });
 var hbs=require('hbs');
+var salt = bcrypt.genSaltSync(10);
 // app/routes.js
 module.exports = function(app, passport) {
 //home page
 app.get('/', function(req, res) {
+  // res.flash('Welcome');
     res.render('index.hbs', {
         layout: 'layout1',
+        // message: req.flash('signinMessage')
     });
 });
 //login
@@ -27,25 +32,14 @@ app.get('/', function(req, res) {
 //         message: req.flash('loginMessage')
 //     });
 // });
-//sends successful login state back to angular
-	app.get('/success', function(req, res){
-		res.send({state: 'success', user: req.user ? req.user : null});
-	});
-
-	//sends failure login state back to angular
-	app.get('/failure', function(req, res){
-		res.send({state: 'failure', user: null, message: "Invalid username or password"});
-	});
-
 // process the login form
 app.post('/', passport.authenticate('local-login', {
     successRedirect: '/role', // redirect to the secure profile section
     failureRedirect: '/', // redirect back to the signup page if there is an error
-    failureFlash: true // allow flash messages
+    failureFlash: true // allow flash messages)
 }));
 //signup
 // app.get('/signup', function(req, res) {
-//
 //     // render the page and pass in any flash data if it exists
 //     res.render('signup.hbs', {
 //         message: req.flash('signupMessage')
@@ -209,26 +203,89 @@ app.get('/viewtutorials',isLoggedIn,function(req,res){
       });
 });
 app.get('/settings',isLoggedIn,function(req,res){
+  res.flash('hello');
       res.render('settings.hbs',{
         layout:'layout4',
         user:req.user
       });
 });
-app.post('/changeusername',isLoggedIn,function(req,res){
-  console.log(req.bod);
-  res.send("hi");
-})
-app.post('/changingpassword',isLoggedIn,function(req,res){
-  console.log(req.body);
-  console.log(req.user.local.password);
-  oldpwd = req.body.old;
-  newpwd = req.user.local.password;
-  bcrypt.compare(oldpwd, newpwd, function(err, result) {
-    // res == true
-    console.log(result);
+app.get('/forgotpassword',isLoggedIn,function(req,res){
+  res.render('forgotpassword.hbs',{
+    user:req.user
+  });
+});
+app.get('/resetpassword',isLoggedIn,function(req,res){
+  res.render('resetpassword.hbs',{
+    user:req.user
+  });
+});
+app.post('/reset',isLoggedIn,function(req,res){
+  n = bcrypt.hashSync(req.body.password,salt);
     User.update({_id: req.body.id}, {
         $set: {
-            'password':generateHash(req.body.new)
+            'local.password':n
+          }
+      },
+      function(err, result) {
+          if (err)
+              res.json(err)
+          else
+          {
+              notifier.notify("Successfully Changed");
+          }
+      });
+});
+app.post('/deleteaccount',isLoggedIn,function(req,res) {
+  console.log(req.body);
+   username = req.body.username;
+    password = req.body.password;
+    newpwd = req.user.local.password;
+    if(username == req.user.local.name){
+      bcrypt.compare(password, newpwd, function(err, result) {
+        console.log(result);
+        if(result == true){
+            User.remove({'local.name':req.body.username},function(err,doc) {
+              if(err)
+               res.json(err);
+               else
+                res.flash('Successfully Changed','success');
+            });
+    }
+    else {
+    // res.flash('Inavalid username and Password','error');
+  
+    }
+  });
+  }
+});
+
+app.post('/sendmail',isLoggedIn,function(req,res){
+  console.log(req.body.mail);
+  var transporter = nodemailer.createTransport({service: 'Gmail',
+        auth: {
+            user: 'pushpa.k@bestflux.com', // Your email id
+            pass: 'pushpanjali' // Your password
+        }
+      });
+    var mailOptions = {
+    from: '<pushpa.k@bestflux.com>', // sender address
+    to: req.body.mail, // list of receivers
+    subject: 'Reset Your Password ✔', // Subject line
+    text: 'You can use the following link to reset your password:', // plaintext body
+    html: '<a href="http://localhost:3000/resetpassword">forgotpassword</a>' // html body
+};
+transporter.sendMail(mailOptions, function(error, info){
+    if(error){
+        return console.log(error);
+    }
+    res.redirect('/role');
+    console.log('Message sent: ' + info.response);
+});
+})
+app.post('/changeusername',isLoggedIn,function(req,res){
+    User.update({_id: req.body.id}, {
+        $set: {
+            'local.name':req.body.username
           }
       },
       function(err, result) {
@@ -240,8 +297,33 @@ app.post('/changingpassword',isLoggedIn,function(req,res){
                res.redirect('/settings');
           }
       });
-      console.log(generateHash(req.body.new));
-
+})
+app.post('/changingpassword',isLoggedIn,function(req,res){
+  oldpwd = req.body.old;
+  newpwd = req.user.local.password;
+  n = bcrypt.hashSync(req.body.password,salt);
+  bcrypt.compare(oldpwd, newpwd, function(err, result) {
+    console.log(result);
+    if(result == true ){
+    User.update({_id: req.body.id}, {
+        $set: {
+            'local.password':n
+          }
+      },
+      function(err, result) {
+          if (err)
+              res.json(err)
+          else
+          {
+              notifier.notify("Successfully Changed");
+               res.redirect('/settings');
+          }
+      });
+    }
+    else {
+      notifier.notify("unable to update your password,please check your password");
+    //  alert("unable");
+    }
 });
 })
 
@@ -362,6 +444,7 @@ app.post('/updateprofile', isLoggedIn, upload.single('profile'), function(req, r
                 'name': req.user.local.name,
                 'fname': req.body.fname,
                 'lname': req.body.lname,
+                'email': req.body.email,
                 'phonenumber': req.body.pno,
                 'gender': req.body.gender,
                 'address': req.body.address,

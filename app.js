@@ -12,6 +12,7 @@ var flash = require('express-flash');
 var multer = require('multer');
 var fs = require('fs');
 var hbs = require('hbs');
+var flash = require('flash-express');
 
 hbs.registerPartial('navbar', fs.readFileSync(__dirname + '/views/navbar.hbs', 'utf8'));
 hbs.registerPartial('navbar2', fs.readFileSync(__dirname + '/views/navbar2.hbs', 'utf8'));
@@ -33,23 +34,16 @@ app.use(bodyparser.urlencoded({ extended: true }));
 	app.use('/uploads', express.static(__dirname + "/uploads"));
 //	app.use(express.static('./uploads'));
 
-	app.set('view engine', 'hbs'); // set up ejs for templating
 
 	// required for passport
-	app.use(express.session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secret
+	app.use(express.session({ secret: 'ilovescotchscotchyscotchscotch',
+                             saveUninitialized:true,
+													 resave:true })); // session secret
 	app.use(passport.initialize());
 	app.use(passport.session()); // persistent login sessions
-	app.use(flash()); // use connect-flash for flash messages stored in session
+	 app.use(flash()); // use connect-flash for flash messages stored in session
 
-// 	app.use(cookieparser('secret'));
-//   app.use(session({
-//     cookie: { maxAge: 60000 },
-//     store: sessionStore,
-//     saveUninitialized: true,
-//     resave: 'true',
-//     secret: 'secret'
-// }));
-// app.use(flash());
+	 app.set('view engine', 'hbs'); // set up ejs for templating
 
 // routes ======================================================================
 require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport

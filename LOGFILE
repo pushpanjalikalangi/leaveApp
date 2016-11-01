@@ -1,0 +1,728 @@
+[90mGET /settings [36m302 [90m15ms - 46b[0m
+[90mGET / [36m304 [90m24ms[0m
+[90mPOST / [36m302 [90m110ms - 54b[0m
+[90mGET /role [36m304 [90m30ms[0m
+[90mGET /settings [32m200 [90m23ms - 12.75kb[0m
+[90mGET /settings [36m304 [90m7ms[0m
+[90mGET /settings [32m200 [90m11ms - 12.76kb[0m
+[90mGET /role [36m304 [90m32ms[0m
+[90mGET /settings [32m200 [90m17ms - 12.75kb[0m
+[90mGET /settings [32m200 [90m12ms - 12.62kb[0m
+[90mGET /settings?id=5810502102852e9620671808&username=pushpanjali [32m200 [90m12ms - 12.62kb[0m
+{ id: '5810502102852e9620671808',
+  old: 'Kalangi@94',
+  new: 'pushpa',
+  renew: 'pushpa' }
+$2a$08$ezuZNohzu2QK4itaAXuzOejjTvMjUfyt4xzo7v63u376079gWJXZa
+$2a$10$3sF9NrCb6OWIw2HytfuM3uj6iD.DQWBjx8wjc2x02wFAopn2myx1S
+true
+[90mPOST /changingpassword [36m302 [90m144ms - 62b[0m
+[90mGET /settings [36m304 [90m13ms[0m
+[90mGET /applyleave [32m200 [90m9ms - 6.83kb[0m
+[90mGET /logout [36m302 [90m4ms - 46b[0m
+[90mGET / [32m200 [90m4ms - 8.28kb[0m
+[90mPOST / [36m302 [90m267ms - 54b[0m
+[90mGET /role [36m304 [90m30ms[0m
+[90mGET /role [36m304 [90m15ms[0m
+[90mGET /settings [32m200 [90m15ms - 12.61kb[0m
+[90mGET /settings?id=5810502102852e9620671808&username=pushpanjali [32m200 [90m23ms - 12.61kb[0m
+{ id: '5810502102852e9620671808',
+  old: 'pushpa',
+  new: 'pushpa',
+  renew: 'pushpa' }
+$2a$10$3sF9NrCb6OWIw2HytfuM3uj6iD.DQWBjx8wjc2x02wFAopn2myx1S
+$2a$10$3sF9NrCb6OWIw2HytfuM3uj6iD.DQWBjx8wjc2x02wFAopn2myx1S
+true
+[90mPOST /changingpassword [36m302 [90m205ms - 62b[0m
+[90mGET /settings [36m304 [90m13ms[0m
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #1
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #2
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #3
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #4
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #5
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #6
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #7
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #8
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #9
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #10
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #11
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #12
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #13
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #14
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #15
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #16
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #17
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #18
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #19
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #20
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #21
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #22
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #23
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #24
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #25
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #26
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #27
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #28
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #29
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #30
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #31
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #32
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #33
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #34
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #35
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #36
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #37
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #38
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #39
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #40
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #41
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #42
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #43
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #44
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #45
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #46
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #47
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #48
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #49
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #50
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #51
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #52
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #53
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #54
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #55
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #56
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #57
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #58
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #59
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+[90mGET /settings [32m200 [90m16ms - 12.61kb[0m
+error: Script restart attempt #60
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #61
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #62
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #63
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #64
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #65
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #66
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #67
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #68
+{ id: '5810502102852e9620671808',
+  old: 'pushpa',
+  new: 'pushpa',
+  renew: 'pushpa' }
+$2a$10$3sF9NrCb6OWIw2HytfuM3uj6iD.DQWBjx8wjc2x02wFAopn2myx1S
+$2a$10$3sF9NrCb6OWIw2HytfuM3uj6iD.DQWBjx8wjc2x02wFAopn2myx1S
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+true
+[90mPOST /changingpassword [36m302 [90m212ms - 62b[0m
+[90mGET /settings [36m304 [90m13ms[0m
+error: Script restart attempt #69
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #70
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #71
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #72
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #73
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #74
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #75
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #76
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #77
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #78
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #79
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #80
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #81
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #82
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #83
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #84
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #85
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #86
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #87
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #88
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #89
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #90
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #91
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #92
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #93
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #94
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #95
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #96
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #97
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #98
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #99
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #100
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #101
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #102
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #103
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #104
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #105
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #106
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #107
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #108
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #109
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #110
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #111
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #112
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #113
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #114
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #115
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #116
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #117
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #118
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #119
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #120
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #121
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #122
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #123
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #124
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #125
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #126
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #127
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #128
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #129
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #130
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #131
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #132
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #133
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #134
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #135
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #136
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #137
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #138
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #139
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #140
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #141
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #142
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #143
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #144
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #145
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #146
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #147
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #148
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #149
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #150
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #151
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #152
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #153
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #154
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #155
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #156
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #157
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #158
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #159
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+[90mGET /settings [32m200 [90m11ms - 12.63kb[0m
+error: Script restart attempt #160
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #161
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #162
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #163
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #164
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #165
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #166
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #167
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #168
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #169
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #170
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+{ id: '5810502102852e9620671808',
+  old: 'pushpa',
+  new: 'pushpa',
+  renew: 'pushpa' }
+$2a$10$3sF9NrCb6OWIw2HytfuM3uj6iD.DQWBjx8wjc2x02wFAopn2myx1S
+$2a$10$3sF9NrCb6OWIw2HytfuM3uj6iD.DQWBjx8wjc2x02wFAopn2myx1S
+true
+[90mPOST /changingpassword [36m302 [90m202ms - 62b[0m
+[90mGET /settings [36m304 [90m23ms[0m
+error: Script restart attempt #171
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #172
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #173
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #174
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #175
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #176
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #177
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #178
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #179
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #180
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #181
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #182
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #183
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #184
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #185
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #186
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #187
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #188
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #189
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #190
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #191
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #192
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #193
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #194
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #195
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #196
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #197
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #198
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #199
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #200
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #201
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #202
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #203
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #204
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #205
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #206
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #207
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #208
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Script restart attempt #209
+Port 3000 is already in use
+error: Forever detected script exited with code: 1
+error: Forever detected script was killed by signal: SIGKILL
+error: Script restart attempt #210
+error: Forever detected script was killed by signal: SIGKILL
+[90mGET /settings [36m302 [90m16ms - 46b[0m
+[90mGET / [32m200 [90m29ms - 8.28kb[0m
+[90mPOST / [36m302 [90m305ms - 54b[0m
+[90mGET /role [36m304 [90m40ms[0m
+[90mGET /settings [32m200 [90m14ms - 12.63kb[0m
+true
+[90mPOST /changingpassword [36m302 [90m225ms - 62b[0m
+[90mGET /settings [36m304 [90m15ms[0m
+[90mGET /settings [32m200 [90m14ms - 12.64kb[0m
+true
+[90mPOST /changingpassword [36m302 [90m208ms - 62b[0m
+[90mGET /settings [36m304 [90m19ms[0m
+[90mGET /settings [36m304 [90m27ms[0m
+[90mGET /settings [36m304 [90m19ms[0m
+[90mGET /applyleave [36m304 [90m13ms[0m
+[90mGET /settings [36m304 [90m15ms[0m
+[90mGET /settings [36m304 [90m13ms[0m
+[90mGET /settings [32m200 [90m13ms - 12.63kb[0m
+[90mGET /role [36m304 [90m18ms[0m
+[90mGET /viewleaves [32m200 [90m38ms - 14.51kb[0m
+[90mGET /applyleave [36m304 [90m10ms[0m
+[90mGET /viewpost [32m200 [90m33ms - 7.95kb[0m
+[90mGET /uploads/42332d9035ca7a764e23ec224678179e [36m304 [90m5ms[0m
+[90mGET /uploads/e842a34611bcf0cd04dc59e96a464a89 [36m304 [90m2ms[0m
+[90mGET /uploads/2be2c821c189d4296b19ccdf33c9ac26 [36m304 [90m0ms[0m
+[90mGET /uploads/45cbe5f55e0d8b86cffc2c13e52ed833 [36m304 [90m2ms[0m
+[90mGET /settings [36m304 [90m24ms[0m
+[90mGET / [32m200 [90m8ms - 8.28kb[0m
+[90mGET / [36m304 [90m5ms[0m
+[90mPOST / [36m302 [90m266ms - 54b[0m
+[90mGET /role [36m304 [90m17ms[0m
+[90mGET /settings [36m304 [90m9ms[0m
+[90mGET /settings [36m304 [90m20ms[0m
+[90mGET /settings [36m304 [90m10ms[0m
+[90mGET /settings [36m304 [90m9ms[0m
+[90mGET /settings [36m304 [90m20ms[0m
+error: Forever detected script was killed by signal: SIGKILL
+error: Script restart attempt #1
+error: Forever detected script was killed by signal: SIGKILL
