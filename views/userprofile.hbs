@@ -73,25 +73,13 @@
                                                     <td>Email:</td>
                                                     <td>{{user.email}}</td>
                                                 </tr>
-                                                <tr>
-                                                    <td>Phone Number:</td>
-                                                    <td>{{user.phonenumber}}</td>
-                                                </tr>
 
                                                 <tr>
                                                     <tr>
                                                         <td>Gender:</td>
                                                         <td>{{user.gender}} </td>
                                                     </tr>
-                                                    <tr>
-                                                        <td>Address:</td>
-                                                        <td>{{user.address}}</td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td>Country:</td>
-                                                        <td>India</td>
-                                                    </tr>
+                                                    
                                                     <tr>
                                                         <td>Language:</td>
                                                         <td>{{user.language}}</td>
@@ -106,16 +94,15 @@
                                     <input type="hidden" name="id" value="{{user._id}}">
                                     {{#if role}}
                                         <a href="/update" class="btn btn-primary" style="width:160px">Update Profile</a>
-
+                                        <a href="/addnewaddress" class="btn btn-primary" style="width:180px">Add New Address</a>
                                     {{else}}
                                         <button type="submit" class="btn btn-primary" style="width:170px">Accept</button>
-
                                     {{/if}}
                                 </div>
                             </div>
                         </div>
-                </div>
-              </form>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

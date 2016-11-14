@@ -26,8 +26,8 @@ require('./config/passport')(passport); // pass passport for configuration
 	app.use(express.logger('dev')); // log every request to the console
 	app.use(express.cookieParser()); // read cookies (needed for auth)
 //	app.use(express.bodyParser()); // get information from html forms
-app.use(bodyparser.json()); // to support JSON bodies
-app.use(bodyparser.urlencoded({ extended: true }));
+        app.use(bodyparser.json()); // to support JSON bodies
+        app.use(bodyparser.urlencoded({ extended: true }));
 	app.use(express.json());
 	app.use(express.urlencoded());
 	app.use(multer({ dest: './uploads/' }));
@@ -36,9 +36,7 @@ app.use(bodyparser.urlencoded({ extended: true }));
 
 
 	// required for passport
-	app.use(express.session({ secret: 'ilovescotchscotchyscotchscotch',
-                             saveUninitialized:true,
-													 resave:true })); // session secret
+	app.use(express.session({ secret: 'ilovescotchscotchyscotchscotch',saveUninitialized:true,resave:true })); // session secret
 	app.use(passport.initialize());
 	app.use(passport.session()); // persistent login sessions
 	 app.use(flash()); // use connect-flash for flash messages stored in session

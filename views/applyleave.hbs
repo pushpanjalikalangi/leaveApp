@@ -7,6 +7,67 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
 
 	<script>
+		// 	window.onload = function() {
+		//    document.getElementById('date').disabled = true;
+		// };
+		function toggleMe(val) {
+			var sum = document.forms["form1"]["sum"].value;
+			var sum1 = document.forms["form1"]["sum1"].value;
+			var sum2 = document.forms["form1"]["sum2"].value;
+			var sum3 = document.forms["form1"]["sum3"].value;
+
+			var date = document.getElementById('date');
+			var date1 = document.getElementById('date1');
+			var reason = document.getElementById('reason');
+
+			if (val == 'casual-leave') {
+				if (sum3 >= 10) {
+					date.disabled = true;
+					date1.disabled = true;
+					reason.disabled = true;
+					alert("you have no more leaves")
+				} else {
+					date.disabled = false;
+					date1.disabled = false;
+					reason.disabled = false;
+				}
+			}else if (val == 'sick-leave') {
+				if (sum1 >= 10) {
+					date.disabled = true;
+					date1.disabled = true;
+					reason.disabled = true;
+					alert("you have no more leaves")
+				} else {
+					date.disabled = false;
+					date1.disabled = false;
+					reason.disabled = false;
+				}
+			}else if (val == 'sleep-leave') {
+				if (sum >= 10) {
+					date.disabled = true;
+					date1.disabled = true;
+					reason.disabled = true;
+					alert("you have no more leaves")
+				} else {
+					date.disabled = false;
+					date1.disabled = false;
+					reason.disabled = false;
+				}
+			}else if (val == 'eamed-leave') {
+				if (sum2 >= 10) {
+					date.disabled = true;
+					date1.disabled = true;
+					reason.disabled = true;
+					alert("you have no more leaves")
+				} else {
+					date.disabled = false;
+					date1.disabled = false;
+					reason.disabled = false;
+				}
+			}
+
+		}
+
 		$(document).ready(function() {
 			var date_input = $('input[name="leavefrom"]'); //our date input has the name "date"
 			var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
@@ -38,21 +99,26 @@
 </head>
 
 <body>
+
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
 				<div class="well bs-component">
-					<form action="/applynewleave" method="post" class="form-horizontal">
+					<form action="/applynewleave" method="post" id="form1" class="form-horizontal">
 						<fieldset>
 							<legend>Apply Leave</legend>
+							<input type="hidden" name="sum" value="{{sl}}">
+							<input type="hidden" name="sum1" value="{{si}}">
+							<input type="hidden" name="sum2" value="{{e}}">
+							<input type="hidden" name="sum3" value="{{c}}">
 							<div class="form-group">
 								<label for="leave-type" class="col-md-2 control-label">Leave Type</label>
 								<div class="col-md-10">
-									<select name="leavetype" id="leave-type" class="form-control">
+									<select name="leavetype" id="leave-type" class="form-control" onchange="toggleMe(this.value)">
 									  <option value="sleep-leave">select</option>
-									  <option value="casual-leave">Casual Leave</option>
-									  <option value="sick-leave">Sick Leave</option>
-									  <option value="eamed-leave">Eamed Leave</option>
+									  <option value="casual-leave" id="casual-leave" >Casual Leave</option>
+									  <option value="sick-leave" id="Sick Leave">Sick Leave</option>
+									  <option value="eamed-leave" id="Eamed Leave">Eamed Leave</option>
 						   	</select>
 								</div>
 							</div>
@@ -71,9 +137,10 @@
 							<div class="form-group">
 								<label for="reason" class="col-md-2 control-label">Reason</label>
 								<div class="col-md-10">
-									<input type="textarea" class="form-control" name="reason">
+									<input type="text" class="form-control" id="reason" name="reason">
 								</div>
 							</div>
+							<!-- <input type="text" name="sum" value="{{leavetype}}"> -->
 							<div class="form-group">
 								<div class="col-md-10 col-md-offset-2">
 									<button type="submit" class="btn btn-primary btn-lg">Apply</button>
@@ -85,4 +152,5 @@
 			</div>
 		</div>
 	</div>
+
 </body>

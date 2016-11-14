@@ -16,11 +16,8 @@ var userSchema = mongoose.Schema({
     fname:String,
     lname:String,
     email:String,
-    phonenumber:Number,
     gender:String,
-    address:String,
-    country:String,
-    zipcode:Number,
+    address:Array,
     language:String,
     profile:Object,
     auth:Boolean

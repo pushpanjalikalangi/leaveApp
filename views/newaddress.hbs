@@ -1,0 +1,100 @@
+<html>
+
+<head>
+    <title>leave application</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="well bs-component">
+                    <form action='/addaddress' method='post' class="form-horizontal">
+                        <fieldset>
+                            <legend>Add New Address</legend>
+                            <input type="hidden" name="id" value="{{user._id}}">
+                            <div class="form-group">
+                                <label for="fname" class="col-md-2 control-label">Name</label>
+                                <div class="col-md-10">
+                                    <input class="form-control" id="fname" name="fname" type="text" value="{{user.fname}}  {{user.lname}}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="street" class="col-md-2 control-label">Street Address</label>
+                                <div class="col-md-10">
+                                    <textarea type="text" class="form-control" id="street" name="street"></textarea>
+                                    <label>(Maximum Limit:216 characters)</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="landmark" class="col-md-2 control-label">Landmark</label>
+                                <div class="col-md-10">
+                                    <input class="form-control" id="landmark" name="landmark" type="text">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="city" class="col-md-2 control-label">City</label>
+                                <div class="col-md-10">
+                                    <input class="form-control" id="city" name="city" type="text">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="state" class="col-md-2 control-label">State</label>
+                                <div class="col-md-10">
+                                    <select id="state" name="state" class="form-control">
+                                <option value="select">select</option>
+                                <option value="ap">Andhra Pradesh</option>
+                                <option value="ts">Telangana</option>
+                               </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="country" class="col-md-2 control-label">Country</label>
+                                <div class="col-md-10">
+                                    <input class="form-control" id="country" name="country" type="text">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="zipcode" class="col-md-2 control-label">Pincode</label>
+                                <div class="col-md-10">
+                                    <input type="number" id="zipcode" name="zipcode" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="pno" class="col-md-2 control-label">Phone Number</label>
+                                <div class="col-md-10">
+                                    <input type="text" id="pno" name="pno" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-10 col-md-offset-2">
+                                    <button type="submit" class="btn btn-primary btn-lg">Save Changes</button>
+                                    <a type="reset" href="/role" class="btn btn-warning btn-lg">Cancel</a>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <!-- <div class="row"> -->
+                    <legend>your saved Address</legend>
+                    {{#each user}}
+                    <!-- Name: {{fname}} {{lname}} -->
+                        {{#each address}}
+                            <div class="col-sm-4">
+
+                                <div class="well well-sm">
+                                    Street: {{street}},<br/> Landmark: {{landmark}},<br/> State: {{state}},<br/> Country: {{country}},<br/> Pincode: {{zipcode}},<br/> Phone Number: {{phonenumber}}
+                                </div>
+                            </div>
+                        {{/each}}
+                    {{/each}}
+
+                <!-- </div> -->
+            </div>
+        </div>
+    </div>
+</body>
